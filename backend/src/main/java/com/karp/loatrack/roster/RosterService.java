@@ -47,7 +47,7 @@ public class RosterService {
 
         Optional<User> user = userRepository.findById(characterDto.userId);
         if (user.isPresent()) {
-            c.setFkUser(userRepository.findById(characterDto.userId).get());
+            c.setFkUser(user.get());
         } else {
             log.error("User not found");
         }
