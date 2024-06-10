@@ -1,0 +1,15 @@
+CREATE TABLE public."T_ROSTER_INV"
+(
+    "ID" integer NOT NULL,
+    "FK_ITEM" integer NOT NULL,
+    "AMOUNT" integer NOT NULL,
+    PRIMARY KEY ("ID"),
+    CONSTRAINT "FK_ROSTER_INV_ITEM" FOREIGN KEY ("FK_ITEM")
+        REFERENCES public."T_ITEM" ("ID") MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+        NOT VALID
+);
+
+ALTER TABLE IF EXISTS public."T_ROSTER_INV"
+    OWNER to postgres;

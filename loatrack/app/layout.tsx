@@ -2,14 +2,14 @@ import './globals.css';
 
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
-import { Logo, SettingsIcon, UsersIcon, VercelLogo } from '@/components/icons';
-import { User } from './user';
+import { Logo, SettingsIcon, UsersIcon } from '@/components/icons';
+import { User } from './overview/user';
 import { NavItem } from './nav-item';
 
 export const metadata = {
-  title: 'Next.js App Router + NextAuth + Tailwind CSS',
+  title: 'LOA Track',
   description:
-    'A user admin dashboard configured with Next.js, Postgres, NextAuth, Tailwind CSS, TypeScript, and Prettier.'
+    'Tool to track LOA data.'
 };
 
 export default function RootLayout({
@@ -29,22 +29,22 @@ export default function RootLayout({
                   href="/"
                 >
                   <Logo />
-                  <span className="">ACME</span>
+                  <span className="">LOA Track</span>
                 </Link>
               </div>
               <div className="flex-1 overflow-auto py-2">
                 <nav className="grid items-start px-4 text-sm font-medium">
                   <NavItem href="/">
                     <UsersIcon className="h-4 w-4" />
-                    Users
+                    Overview
                   </NavItem>
-                  <NavItem href="/settings">
+                  <NavItem href="/overview">
+                    <UsersIcon className="h-4 w-4" />
+                    Overview
+                  </NavItem>
+                  <NavItem href="/roster">
                     <SettingsIcon className="h-4 w-4" />
-                    Settings
-                  </NavItem>
-                  <NavItem href="https://vercel.com/templates/next.js/admin-dashboard-tailwind-postgres-react-nextjs">
-                    <VercelLogo className="h-4 w-4" />
-                    Deploy
+                    Roster Settings
                   </NavItem>
                 </nav>
               </div>

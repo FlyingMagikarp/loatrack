@@ -1,6 +1,6 @@
 import { getUsers } from '@/lib/db';
-import { UsersTable } from './users-table';
-import { Search } from './search';
+import { UsersTable } from './overview/users-table';
+import { Search } from './overview/search';
 
 export default async function IndexPage({
   searchParams
