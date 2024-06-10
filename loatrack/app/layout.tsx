@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon } from '@/components/icons';
 import { User } from './overview/user';
-import { NavItem } from './nav-item';
+import { NavItem } from '@/components/ui/nav-item';
 
 export const metadata = {
   title: 'LOA Track',
@@ -36,7 +36,7 @@ export default function RootLayout({
                 <nav className="grid items-start px-4 text-sm font-medium">
                   <NavItem href="/">
                     <UsersIcon className="h-4 w-4" />
-                    Overview
+                    Home
                   </NavItem>
                   <NavItem href="/overview">
                     <UsersIcon className="h-4 w-4" />
