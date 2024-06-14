@@ -16,3 +16,12 @@ ALTER TABLE IF EXISTS public."t_roster_inv"
 
 ALTER TABLE IF EXISTS public.t_roster_inv
 ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
+
+ALTER TABLE IF EXISTS public.t_roster_inv
+    ADD COLUMN fk_user uuid NOT NULL;
+ALTER TABLE IF EXISTS public.t_roster_inv
+    ADD CONSTRAINT fk_roster_inv_user FOREIGN KEY (fk_user)
+    REFERENCES public.t_user (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+       ON DELETE NO ACTION
+    NOT VALID;

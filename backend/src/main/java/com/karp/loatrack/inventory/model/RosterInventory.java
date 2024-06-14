@@ -1,6 +1,7 @@
 package com.karp.loatrack.inventory.model;
 
 import com.karp.loatrack.item.model.Item;
+import com.karp.loatrack.roster.model.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,4 +27,7 @@ public class RosterInventory {
     @JoinColumn(name = "fk_item", referencedColumnName = "id")
     private Item fkItem;
     private int amount;
+    @ManyToOne
+    @JoinColumn(name = "fk_user", referencedColumnName = "id")
+    private User fkUser;
 }
