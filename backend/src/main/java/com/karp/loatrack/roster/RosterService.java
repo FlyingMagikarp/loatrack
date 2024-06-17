@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -18,8 +19,8 @@ public class RosterService {
     private final RosterRepository rosterRepository;
     private final UserRepository userRepository;
 
-    public List<CharacterDto> getAllCharacters() {
-        List<Character> characters = rosterRepository.findAll();
+    public List<CharacterDto> getAllCharacters(UUID userId) {
+        List<Character> characters = rosterRepository.findAllByUserId(userId);
         return characters.stream().map(this::mapCharacterToDto).collect(Collectors.toList());
     }
 
