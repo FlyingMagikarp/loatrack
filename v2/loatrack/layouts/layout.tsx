@@ -1,18 +1,17 @@
-import './globals.css';
+import "./globals.css";
 
-import Link from 'next/link';
-import { Analytics } from '@vercel/analytics/react';
-import { Logo, SettingsIcon, UsersIcon } from '@/components/icons';
-import { User } from './overview/user';
-import { NavItem } from '@/components/ui/nav-item';
+import Link from "next/link";
+import { Logo, SettingsIcon, UsersIcon } from "@/components/icons";
+import { User } from "./overview/user";
+import { NavItem } from "@/components/nav-item";
 
 export const metadata = {
-  title: 'LOA Track',
-  description: 'Tool to track LOA data.'
+  title: "LOA Track",
+  description: "Tool to track LOA data.",
 };
 
 export default function RootLayout({
-  children
+  children,
 }: {
   children: React.ReactNode;
 }) {
@@ -63,7 +62,6 @@ export default function RootLayout({
             {children}
           </div>
         </div>
-        <Analytics />
       </body>
     </html>
   );
