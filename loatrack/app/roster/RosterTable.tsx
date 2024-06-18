@@ -8,17 +8,20 @@ import {
   TableRow
 } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
+import { Logo } from '@/components/icons';
+import { ClassIcon } from '@/components/ui/ClassIcon';
 
 export interface IRosterTable {
   roster: ICharacterDto[];
 }
 
 export function RosterTable({ roster }: IRosterTable) {
-  console.log(roster);
   const RosterRow = (character: ICharacterDto) => {
     return (
       <TableRow>
-        <TableCell className="font-medium">{character.classname}</TableCell>
+        <TableCell className="font-medium">
+          {<ClassIcon classString={character.classname} />}
+        </TableCell>
         <TableCell className="md:table-cell">{character.name}</TableCell>
         <TableCell className="md:table-cell">{character.ilvl}</TableCell>
         <TableCell className="md:table-cell">
