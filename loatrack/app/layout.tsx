@@ -3,7 +3,6 @@ import './globals.css';
 import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 import { Logo, SettingsIcon, UsersIcon } from '@/components/icons';
-import { User } from './overview/user';
 import { NavItem } from '@/components/ui/nav-item';
 
 export const metadata = {
@@ -37,10 +36,6 @@ export default function RootLayout({
                     <UsersIcon className="h-4 w-4" />
                     Home
                   </NavItem>
-                  <NavItem href="/overview">
-                    <UsersIcon className="h-4 w-4" />
-                    Overview
-                  </NavItem>
                   <NavItem href="/roster">
                     <SettingsIcon className="h-4 w-4" />
                     Roster Settings
@@ -56,9 +51,7 @@ export default function RootLayout({
                 href="/"
               >
                 <Logo />
-                <span className="">ACME</span>
               </Link>
-              <User />
             </header>
             {children}
           </div>

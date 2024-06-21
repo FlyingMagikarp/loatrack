@@ -1,4 +1,4 @@
-import { RosterTable } from './RosterTable';
+import { RosterTable } from './components/RosterTable';
 import { getRoster } from './actions';
 import { USER_ID } from '@/lib/constants';
 

@@ -33,21 +33,20 @@ export function RosterTable({ roster }: IRosterTable) {
 
   return (
     <>
-      <form className="border shadow-sm rounded-lg">
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="max-w-[150px]">Class</TableHead>
-              <TableHead className="md:table-cell">Name</TableHead>
-              <TableHead className="md:table-cell">iLvL</TableHead>
-              <TableHead className="md:table-cell">Notes Overview</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {roster.map((character) => RosterRow(character))}
-          </TableBody>
-        </Table>
-      </form>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead className="max-w-[150px]">Class</TableHead>
+            <TableHead className="md:table-cell">Name</TableHead>
+            <TableHead className="md:table-cell">iLvL</TableHead>
+            <TableHead className="md:table-cell">Notes Overview</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>{roster.map((character) => RosterRow(character))}</TableBody>
+      </Table>
+      <Button size="icon" variant="secondary">
+        Add
+      </Button>
     </>
   );
 }
