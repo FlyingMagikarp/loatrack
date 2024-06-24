@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+
+.roster-table-header-cell {
+  @apply table-cell w-52 text-left border-collapse border border-slate-500 bg-gray-600
+}
+
+.roster-table-cell {
+  @apply table-cell w-52 border-collapse border border-slate-500
+}
+
+.btn-primary {
+  @apply align-middle select-none font-sans font-bold text-center uppercase transition-all text-xs py-3 px-6 rounded-lg bg-green-800 hover:bg-green-700 text-white mt-3
+}

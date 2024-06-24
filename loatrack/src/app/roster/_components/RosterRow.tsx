@@ -13,10 +13,10 @@ export function RosterRow({ character }: IRosterRowProps) {
 
   return (
     <tr key={character.id} className="hover:bg-gray-500" onClick={() => router.push(`/character/${character.id}`)}>
-      <td className="table-cell w-52 border-collapse border border-slate-500">{<ClassIcon classString={character.classname} />}</td>
-      <td className="table-cell w-52 border-collapse border border-slate-500">{character.name}</td>
-      <td className="table-cell w-52 border-collapse border border-slate-500">{character.ilvl}</td>
-      <td className="table-cell w-52 border-collapse border border-slate-500">{character.notesOverview}</td>
+      <td className="roster-table-cell">{<ClassIcon classString={character.classname} />}</td>
+      <td className="roster-table-cell">{character.name}</td>
+      <td className="roster-table-cell">{character.ilvl}</td>
+      <td className="roster-table-cell">{character.notesOverview}</td>
     </tr>
   );
 }

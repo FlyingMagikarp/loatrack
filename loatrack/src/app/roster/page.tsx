@@ -1,7 +1,7 @@
 import { API_BASE, API_ROSTER_V1, USER_ID } from '@/lib/constants';
 import { ICharacterDto } from '@/lib/dtos';
-import RosterRow from '@/app/roster/_components/RosterRow';
 import { RosterTable } from '@/app/roster/_components/RosterTable';
+import Link from "next/link";
 
 async function getRoster(userId: string){
   const res = await fetch(API_BASE + API_ROSTER_V1 + '?userId=' + userId, {cache: 'no-cache'});
@@ -17,6 +17,10 @@ export default async function Roster() {
     <main>
       <div>
         <RosterTable roster={roster}/>
+
+        <Link href={"/character/new"}>
+          <button className="btn-primary" type="button">Add</button>
+        </Link>
       </div>
     </main>
   );
