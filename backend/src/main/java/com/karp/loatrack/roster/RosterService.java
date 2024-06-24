@@ -24,10 +24,10 @@ public class RosterService {
         return characters.stream().map(this::mapCharacterToDto).collect(Collectors.toList());
     }
 
-    public Character getCharacterById(int id) {
+    public CharacterDto getCharacterById(int id) {
         Optional<Character> character = rosterRepository.findById(id);
         if (character.isPresent()) {
-            return character.get();
+            return mapCharacterToDto(character.get());
         }
         log.error("Character not found");
         return null;

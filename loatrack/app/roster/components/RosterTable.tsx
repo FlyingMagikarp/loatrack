@@ -10,6 +10,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/icons';
 import { ClassIcon } from '@/components/ui/ClassIcon';
+import Link from 'next/link';
 
 export interface IRosterTable {
   roster: ICharacterDto[];
@@ -20,7 +21,11 @@ export function RosterTable({ roster }: IRosterTable) {
     return (
       <TableRow>
         <TableCell className="font-medium">
-          {<ClassIcon classString={character.classname} />}
+          {
+            <Link href={'/character?charId=' + character.id}>
+              <ClassIcon classString={character.classname} />
+            </Link>
+          }
         </TableCell>
         <TableCell className="md:table-cell">{character.name}</TableCell>
         <TableCell className="md:table-cell">{character.ilvl}</TableCell>

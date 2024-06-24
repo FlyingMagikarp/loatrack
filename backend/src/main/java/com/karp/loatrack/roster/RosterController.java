@@ -28,8 +28,8 @@ public class RosterController {
     }
 
     @GetMapping("/character")
-    public ResponseEntity<Character> getCharacterById(@RequestParam int charId){
-        return ResponseEntity.ok().body(rosterService.getCharacterById(charId));
+    public ResponseEntity<CharacterDto> getCharacterById(@RequestParam String charId){
+        return ResponseEntity.ok().body(rosterService.getCharacterById(Integer.parseInt(charId)));
     }
 
     @PostMapping("/updateCharacter")
