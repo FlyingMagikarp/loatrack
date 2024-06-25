@@ -5,6 +5,7 @@ import com.karp.loatrack.roster.model.Character;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,6 +33,7 @@ public class RosterController {
         return ResponseEntity.ok().body(rosterService.getCharacterById(Integer.parseInt(charId)));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/updateCharacter")
     public void updateCharacter(@RequestBody CharacterDto characterDto){
         rosterService.saveCharacter(characterDto);
