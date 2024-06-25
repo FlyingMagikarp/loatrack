@@ -10,8 +10,6 @@ export async function updateCharacterInfo(character: ICharacterDto) {
     body: JSON.stringify(character),
     cache: 'no-cache'
   });
-  console.log('res');
-  console.log(res);
 }
 
 

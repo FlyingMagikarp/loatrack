@@ -31,8 +31,7 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
 
 
 
-  async function onSubmit(){
-    console.log("SUBMIT")
+  async function onSave(){
     let data:ICharacterDto = {
       id: character ? character.id : -1,
       userId: USER_ID,
@@ -45,7 +44,10 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
     }
 
     await updateCharacterInfo(data).then(router.refresh);
+  }
 
+  async function onDelete(){
+    //delete
   }
 
   return (
@@ -96,15 +98,29 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                 </div>
               </div>
 
-              <div>
+            <div className="flex flex-row justify-between">
+              <div className="">
                 <button
                     className="btn-primary"
-                    onClick={onSubmit}>Save
+                    onClick={onSave}>Save
                 </button>
               </div>
 
+
+              {character &&
+                  <div className="">
+                      <button
+                          className="btn-destructive"
+                          onClick={onDelete}>Delete
+                      </button>
+                  </div>
+
+              }
+
           </div>
+
         </div>
-      </main>
-  )
+      </div>
+</main>
+)
 }
