@@ -1,7 +1,7 @@
 'use client'
 
 import {useRouter} from "next/navigation";
-import {FormEvent} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {ICharacterDto} from "@/lib/dtos";
 import {USER_ID} from "@/lib/constants";
 import {updateCharacterInfo} from "@/app/character/action";
@@ -13,23 +13,38 @@ export interface ICharacterEditInfoFormProps {
 export default function CharacterEditInfoForm({ character }: ICharacterEditInfoFormProps) {
   const router = useRouter();
 
-  async function onSubmit(event: FormEvent<HTMLFormElement>){
-    event.preventDefault();
+  const [name, setName] = useState<string>('');
+  const [classname, setClassname] = useState<string>('');
+  const [ilvl, setIlvl] = useState<number>(0);
+  const [notesOverview, setNotesOverview] = useState<string>('');
+  const [notes, setNotes] = useState<string>('');
 
-    const formData = new FormData(event.currentTarget);
+  useEffect(() => {
+    if(character){
+      setName(character.name);
+      setClassname(character.classname);
+      setIlvl(character.ilvl);
+      setNotesOverview(character.notesOverview);
+      setNotes(character.notes);
+    }
+  }, [character]);
 
+
+
+  async function onSubmit(){
+    console.log("SUBMIT")
     let data:ICharacterDto = {
       id: character ? character.id : -1,
       userId: USER_ID,
 
-      name: formData.get("char-name")?.toString()??'',
-      classname: formData.get("class-name")?.toString()??'',
-      ilvl: Number(formData.get("ilvl")?.toString() ??'0'),
-      notesOverview: formData.get("notes-overview")?.toString()??'',
-      notes: formData.get("notes")?.toString()??''
+      name: name,
+      classname: classname,
+      ilvl: ilvl,
+      notesOverview: notesOverview,
+      notes: notes
     }
 
-    await updateCharacterInfo(data).then(()=>router.push('/roster'));
+    await updateCharacterInfo(data).then(router.refresh);
 
   }
 
@@ -43,25 +58,25 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
           </div>
 
           <div className="p-6 space-y-6">
-            <form onSubmit={onSubmit}>
+
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="char-name" className="text-sm font-medium text-gray-900 block mb-2">Name</label>
                   <input type="text" name="char-name" id="char-name"
                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                         placeholder="Character Name" required defaultValue={character?.name}/>
+                         placeholder="Character Name" required value={name} onChange={e => setName(e.target.value)}/>
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="class-name" className="text-sm font-medium text-gray-900 block mb-2">Class</label>
                   <input type="text" name="class-name" id="class-name"
                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                         placeholder="Paladin" required defaultValue={character?.classname}/>
+                         placeholder="Paladin" required value={classname} onChange={e => setClassname(e.target.value)}/>
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                   <label htmlFor="ilvl" className="text-sm font-medium text-gray-900 block mb-2">iLvL</label>
                   <input type="text" name="ilvl" id="ilvl"
                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                         placeholder="1580" required defaultValue={character?.ilvl}/>
+                         placeholder="1580" required value={ilvl} onChange={e => setIlvl(Number(e.target.value))}/>
                 </div>
 
 
@@ -70,24 +85,24 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                     Overview</label>
                   <input type="text" name="notes-overview" id="notes-overview"
                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5"
-                         placeholder="tldr" defaultValue={character?.notesOverview}/>
+                         placeholder="tldr" value={notesOverview} onChange={e => setNotesOverview(e.target.value)}/>
                 </div>
                 <div className="col-span-full">
                   <label htmlFor="notes"
                          className="text-sm font-medium text-gray-900 block mb-2">Notes</label>
                   <textarea name="notes" id="notes" rows="6"
                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-4"
-                            placeholder="Notes..." defaultValue={character?.notes}></textarea>
+                            placeholder="Notes..." value={notes} onChange={e => setNotes(e.target.value)}></textarea>
                 </div>
               </div>
 
               <div>
                 <button
                     className="btn-primary"
-                    type="submit">Save
+                    onClick={onSubmit}>Save
                 </button>
               </div>
-            </form>
+
           </div>
         </div>
       </main>
