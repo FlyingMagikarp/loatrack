@@ -12,9 +12,15 @@ export async function updateCharacterInfo(character: ICharacterDto) {
   });
 }
 
+export async function deleteCharacter(charId: number) {
+  const res = await fetch(API_BASE + API_CHARACTER_V1 + `?charId=${charId}`, {
+    method: 'DELETE',
+    cache: 'no-cache'
+  });
+}
 
 export async function getCharacter(charId: number){
-  const res = await fetch(API_BASE + API_CHARACTER_V1 + '?charId=' + charId, {cache: 'no-cache'});
+  const res = await fetch(API_BASE + API_CHARACTER_V1 + `?charId=${charId}`, {cache: 'no-cache'});
   const data = await res.json();
   return data as ICharacterDto;
 }

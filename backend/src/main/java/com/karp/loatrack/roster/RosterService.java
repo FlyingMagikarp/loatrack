@@ -56,6 +56,11 @@ public class RosterService {
         rosterRepository.save(c);
     }
 
+    public void deleteCharacter(int id) {
+        Optional<Character> oc = rosterRepository.findById(id);
+        oc.ifPresent(rosterRepository::delete);
+    }
+
     private CharacterDto mapCharacterToDto(Character character) {
         CharacterDto c = new CharacterDto();
         c.id = character.getId();

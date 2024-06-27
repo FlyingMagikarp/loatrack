@@ -4,7 +4,7 @@ import {useRouter} from "next/navigation";
 import {FormEvent, useEffect, useState} from "react";
 import {ICharacterDto} from "@/lib/dtos";
 import {USER_ID} from "@/lib/constants";
-import {updateCharacterInfo} from "@/app/character/action";
+import {deleteCharacter, updateCharacterInfo} from "@/app/character/action";
 
 export interface ICharacterEditInfoFormProps {
   character?: ICharacterDto,
@@ -47,7 +47,16 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
   }
 
   async function onDelete(){
-    //delete
+    if (character){
+      await deleteCharacter(character.id).then(() => {router.push('/roster'); router.refresh();});
+    }
+  }
+
+  async function onEditInv(){
+    if (character){
+      router.push(`/inventory/character/${character.id}`);
+    }
+
   }
 
   return (
@@ -100,10 +109,21 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
 
             <div className="flex flex-row justify-between">
               <div className="">
-                <button
-                    className="btn-primary"
-                    onClick={onSave}>Save
-                </button>
+                <div className="">
+                  <button
+                      className="btn-primary"
+                      onClick={onSave}>Save
+                  </button>
+                  {character &&
+                      <div className="">
+                          <button
+                              className="btn-secondary"
+                              onClick={onEditInv}>Edit Inventory
+                          </button>
+                      </div>
+
+                  }
+                </div>
               </div>
 
 

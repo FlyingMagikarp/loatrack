@@ -38,6 +38,10 @@ export default function RootLayout({
                 <UsersIcon className="h-4 w-4" />
                 Home
               </NavItem>
+              <NavItem href="/inventory/roster">
+                <UsersIcon className="h-4 w-4" />
+                Roster Inventory
+              </NavItem>
               <NavItem href="/roster">
                 <SettingsIcon className="h-4 w-4" />
                 Roster Settings

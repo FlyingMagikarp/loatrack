@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/roster/v1")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 @Validated
 public class RosterController {
@@ -33,9 +35,13 @@ public class RosterController {
         return ResponseEntity.ok().body(rosterService.getCharacterById(Integer.parseInt(charId)));
     }
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/updateCharacter")
     public void updateCharacter(@RequestBody CharacterDto characterDto){
         rosterService.saveCharacter(characterDto);
+    }
+
+    @DeleteMapping("/character")
+    public void deleteCharacter(@RequestParam String charId){
+        rosterService.deleteCharacter(Integer.parseInt(charId));
     }
 }
