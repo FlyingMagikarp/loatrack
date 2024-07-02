@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="t_roster_inventory")
+@Table(name="t_roster_inv")
 public class RosterInventory {
 
     @Id

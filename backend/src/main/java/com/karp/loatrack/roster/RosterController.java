@@ -1,7 +1,6 @@
 package com.karp.loatrack.roster;
 
 import com.karp.loatrack.roster.dto.CharacterDto;
-import com.karp.loatrack.roster.model.Character;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -32,7 +31,7 @@ public class RosterController {
 
     @GetMapping("/character")
     public ResponseEntity<CharacterDto> getCharacterById(@RequestParam String charId){
-        return ResponseEntity.ok().body(rosterService.getCharacterById(Integer.parseInt(charId)));
+        return ResponseEntity.ok().body(rosterService.getCharacterDtoById(Integer.parseInt(charId)));
     }
 
     @PostMapping("/updateCharacter")

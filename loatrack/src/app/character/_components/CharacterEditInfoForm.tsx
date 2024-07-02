@@ -43,7 +43,12 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
       notes: notes
     }
 
-    await updateCharacterInfo(data).then(router.refresh);
+    await updateCharacterInfo(data).then(() =>{
+      if(!character) {
+        router.push('/roster');
+      }
+      router.refresh();
+    });
   }
 
   async function onDelete(){

@@ -13,4 +13,5 @@ public interface CharInventoryRepository extends JpaRepository<CharInventory, In
 
     @Query("select ci from CharInventory ci where ci.fkCharacter.id = ?1 and ci.fkItem.id = ?2")
     CharInventory findCharInventoryToUpdate(int characterId, int itemId);
+
 }

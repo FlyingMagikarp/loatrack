@@ -5,10 +5,11 @@ import React from "react";
 export interface ICollapseProps{
   children?: React.ReactNode;
   title: string;
+  initialState: boolean;
 }
 
-export function Collapse({children, title}:ICollapseProps){
-  const [showContent, setShowContent] = React.useState(false);
+export function Collapse({children, title, initialState}:ICollapseProps){
+  const [showContent, setShowContent] = React.useState(initialState);
 
   const toggleShowContent = () => {
     setShowContent(!showContent);

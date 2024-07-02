@@ -1,5 +1,8 @@
 package com.karp.loatrack.roster;
 
+import com.karp.loatrack.inventory.CharInventoryRepository;
+import com.karp.loatrack.inventory.InventoryService;
+import com.karp.loatrack.inventory.model.CharInventory;
 import com.karp.loatrack.roster.dto.CharacterDto;
 import com.karp.loatrack.roster.model.Character;
 import com.karp.loatrack.roster.model.User;
@@ -18,13 +21,15 @@ import java.util.stream.Collectors;
 public class RosterService {
     private final RosterRepository rosterRepository;
     private final UserRepository userRepository;
+    private final InventoryService inventoryService;
+    private final CharInventoryRepository charInventoryRepository;
 
     public List<CharacterDto> getAllCharacters(UUID userId) {
         List<Character> characters = rosterRepository.findAllByUserId(userId);
         return characters.stream().map(this::mapCharacterToDto).collect(Collectors.toList());
     }
 
-    public CharacterDto getCharacterById(int id) {
+    public CharacterDto getCharacterDtoById(int id) {
         Optional<Character> character = rosterRepository.findById(id);
         if (character.isPresent()) {
             return mapCharacterToDto(character.get());
@@ -33,12 +38,24 @@ public class RosterService {
         return null;
     }
 
+    public Character getCharacterById(int id) {
+        Optional<Character> character = rosterRepository.findById(id);
+        if (character.isPresent()) {
+            return character.get();
+        }
+        log.error("Character not found");
+        return null;
+    }
+
     public void saveCharacter(CharacterDto characterDto) {
+        boolean isNewCharacter = true;
         Optional<Character> oc = rosterRepository.findById(characterDto.id);
         Character c = new Character();
         if (oc.isPresent()) {
             c = oc.get();
+            isNewCharacter = false;
         }
+
         c.setName(characterDto.name);
         c.setIlvl(characterDto.ilvl);
         c.setName(characterDto.name);
@@ -54,9 +71,15 @@ public class RosterService {
         }
 
         rosterRepository.save(c);
+        if (isNewCharacter) {
+            inventoryService.initCharacterInventory(c.getId());
+        }
     }
 
     public void deleteCharacter(int id) {
+        List<CharInventory> charInv = charInventoryRepository.findAllByCharacterId(id);
+        charInventoryRepository.deleteAll(charInv);
+
         Optional<Character> oc = rosterRepository.findById(id);
         oc.ifPresent(rosterRepository::delete);
     }

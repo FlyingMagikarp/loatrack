@@ -27,6 +27,11 @@ public class InventoryController {
         return ResponseEntity.ok().body(inventoryService.getInventory(uuid, charId));
     }
 
+    @GetMapping("/tierInv")
+    public ResponseEntity<List<CharInventoryPresentationDto>> getCharacterInventory(@RequestParam UUID uuid, @RequestParam int charId, @RequestParam int tier){
+        return ResponseEntity.ok().body(inventoryService.getInventoryForTier(uuid, charId, tier));
+    }
+
     @PostMapping("/update")
     public void updateCharacterInventory(@RequestParam UUID uuid, @RequestParam int charId, @RequestBody List<CharInventoryPresentationDto> dto){
         inventoryService.updateCharacterInventory(uuid, charId, dto);

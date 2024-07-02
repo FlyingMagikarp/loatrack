@@ -6,35 +6,37 @@ INSERT INTO public.t_item(id, name, fk_tier) VALUES (2, 'silver', 0);
 
 --Tier1
 INSERT INTO public.t_item(id, name, fk_tier) VALUES (3, 'Harmony Shard', 1);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (4, 'Stars Breath', 1);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (5, 'Harmony Leapstone', 1);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (6, 'Destruction Stone Fragment', 1);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (7, 'Guardian Stone Fragment', 1);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (4, 'Harmony Leapstone', 1);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (5, 'Destruction Stone Fragment', 1);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (6, 'Guardian Stone Fragment', 1);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (7, 'Stars Breath', 1);
 
 
 --Tier3
 INSERT INTO public.t_item(id, name, fk_tier) VALUES (8, 'Honor Shard', 2);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (9, 'Solar Grace', 2);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (10, 'Solar Blessing', 2);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (11, 'Solar Protection', 2);
 
 --Tier3_1
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (12, 'Great Honor Leapstone', 3);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (13, 'Crystallized Destruction Stone', 3);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (14, 'Crystallized Guardian Stone', 3);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (15, 'Oreha Fusion Material', 3);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (9, 'Great Honor Leapstone', 3);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (10, 'Crystallized Destruction Stone', 3);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (11, 'Crystallized Guardian Stone', 3);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (12, 'Oreha Fusion Material', 3);
 
 --Tier3_2
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (16, 'Marvelous Honor Leapstone', 4);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (17, 'Obliteration Stone', 4);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (18, 'Protection Stone', 4);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (19, 'Superior Oreha Fusion Material', 4);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (13, 'Marvelous Honor Leapstone', 4);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (14, 'Obliteration Stone', 4);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (15, 'Protection Stone', 4);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (16, 'Superior Oreha Fusion Material', 4);
 
 --Tier3_3
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (20, 'Radiant Honor Leapstone', 5);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (21, 'Refined Obliteration Stone', 5);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (22, 'Refined Protection Stone', 5);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (23, 'Prime Oreha Fusion Material', 5);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (17, 'Radiant Honor Leapstone', 5);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (18, 'Refined Obliteration Stone', 5);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (19, 'Refined Protection Stone', 5);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (20, 'Prime Oreha Fusion Material', 5);
+
+--Tier3 Enhance
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (21, 'Solar Grace', 2);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (22, 'Solar Blessing', 2);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (23, 'Solar Protection', 2);
 
 
 --Books

@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @Entity
-@Table(name="t_char_inventory")
+@Table(name="t_char_inv")
 public class CharInventory {
 
     @Id
