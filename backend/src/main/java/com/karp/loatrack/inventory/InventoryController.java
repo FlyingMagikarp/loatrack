@@ -49,4 +49,14 @@ public class InventoryController {
     public void updateRosterInventory(@RequestParam UUID uuid, @RequestBody List<InventoryFlatDto> dto){
         inventoryService.updateRosterInventory(uuid, dto);
     }
+
+    @GetMapping("/charInvItem")
+    public void getCharInvItem(@RequestParam UUID uuid, @RequestParam int charId, @RequestParam int itemId){
+
+    }
+
+    @GetMapping("/rosterInvItem")
+    public void getRosterInvItem(@RequestParam UUID uuid, @RequestParam int itemId){
+
+    }
 }

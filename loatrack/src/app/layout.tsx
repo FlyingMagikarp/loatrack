@@ -44,7 +44,7 @@ export default function RootLayout({
               </NavItem>
               <NavItem href="/roster">
                 <SettingsIcon className="h-4 w-4" />
-                Roster Settings
+                Roster
               </NavItem>
             </nav>
           </div>

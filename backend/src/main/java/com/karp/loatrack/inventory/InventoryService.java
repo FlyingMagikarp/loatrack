@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -78,10 +77,10 @@ public class InventoryService {
     public List<InventoryPresentationDto> getRosterInventoryForTier(UUID userId, int tier) {
         List<Integer> allTier3Ids = new ArrayList<>();
         if (Constants.TIER_3_ID == tier){
-            allTier3Ids.add(2);
-            allTier3Ids.add(3);
-            allTier3Ids.add(4);
-            allTier3Ids.add(5);
+            allTier3Ids.add(Constants.TIER_3_ID); // base t3
+            //allTier3Ids.add(Constants.TIER_3_1_ID); // t3_1 to 1490
+            allTier3Ids.add(Constants.TIER_3_2_ID); // t3_2 to 1580
+            allTier3Ids.add(Constants.TIER_3_3_ID); // t3_3 to 1620
         } else {
             allTier3Ids.add(tier);
         }
@@ -96,14 +95,14 @@ public class InventoryService {
         Character character = rosterRepository.findById(charId).get();
 
         List<Integer> allTier3Ids = new ArrayList<>();
-        allTier3Ids.add(2);
+        allTier3Ids.add(Constants.TIER_3_ID);
 
         if (character.getIlvl() >= Constants.TIER_3_2_END){
-            allTier3Ids.add(5);
+            allTier3Ids.add(Constants.TIER_3_3_ID);
         } else if (character.getIlvl() >= Constants.TIER_3_1_END){
-            allTier3Ids.add(4);
+            allTier3Ids.add(Constants.TIER_3_2_ID);
         } else {
-            allTier3Ids.add(3);
+            allTier3Ids.add(Constants.TIER_3_1_ID);
         }
 
         return getCharInventory(userId, charId)

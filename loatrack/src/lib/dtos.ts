@@ -29,3 +29,10 @@ export interface ITierDto{
   id: number,
   name: string,
 }
+
+export interface IOverviewCharacterData{
+  charId: number,
+  name: string,
+  inventory: IInventoryPosFlatDto[],
+}
+
