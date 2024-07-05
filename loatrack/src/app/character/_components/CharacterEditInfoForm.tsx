@@ -1,7 +1,7 @@
 'use client'
 
 import {useRouter} from "next/navigation";
-import {FormEvent, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {ICharacterDto} from "@/lib/dtos";
 import {USER_ID} from "@/lib/constants";
 import {deleteCharacter, updateCharacterInfo} from "@/app/character/action";
@@ -130,8 +130,6 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                   }
                 </div>
               </div>
-
-
               {character &&
                   <div className="">
                       <button
@@ -139,9 +137,7 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                           onClick={onDelete}>Delete
                       </button>
                   </div>
-
               }
-
           </div>
 
         </div>

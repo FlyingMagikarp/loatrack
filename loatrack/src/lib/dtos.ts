@@ -8,12 +8,12 @@ export interface ICharacterDto {
   classname: string,
 }
 
-export interface ICharacterInventoryPresentationDto {
+export interface IInventoryPresentationDto {
   item: IItemDto,
   amount: number,
 }
 
-export interface ICharacterInventoryFlatDto {
+export interface IInventoryPosFlatDto {
   itemId: number,
   itemName: string,
   amount: number,

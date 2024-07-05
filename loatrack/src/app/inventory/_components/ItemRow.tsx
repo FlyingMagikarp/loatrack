@@ -1,0 +1,31 @@
+'use client'
+
+import { IInventoryPosFlatDto } from '@/lib/dtos';
+import React from "react";
+
+interface IItemRowProps {
+  item: IInventoryPosFlatDto,
+  updateInv: (ICharacterInventoryFlatDto) => void,
+}
+
+export function ItemRow({ item, updateInv }: IItemRowProps) {
+  const [amount, setAmount] = React.useState<string>(item.amount as string)
+
+  const updateValue = (newVal: string) => {
+    item.amount = parseInt(newVal) || 0;
+    setAmount(newVal);
+    updateInv(item);
+  }
+
+  return (
+      <>
+        <td className="roster-table-cell">&nbsp;</td>
+        <td className="roster-table-cell">{item.itemName}</td>
+        <td className="roster-table-cell">
+          <input type="text" name="char-name" id="char-name"
+                 className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600  p-2.5"
+                 placeholder="Amount" required value={amount} onChange={e => updateValue(e.target.value)}/>
+        </td>
+      </>
+  );
+}
