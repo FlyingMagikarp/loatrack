@@ -13,6 +13,9 @@ export default async function Roster() {
         <Collapse title={'Storage'} initialState={true}>
           <StorageOverview />
         </Collapse>
+        <Collapse title={'Content Window'} initialState={true}>
+
+        </Collapse>
       </div>
     </main>
   );

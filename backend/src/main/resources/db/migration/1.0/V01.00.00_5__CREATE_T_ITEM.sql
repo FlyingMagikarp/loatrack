@@ -13,6 +13,3 @@ CREATE TABLE public."t_item"
 
 ALTER TABLE IF EXISTS public."t_item"
     OWNER to postgres;
-
-ALTER TABLE IF EXISTS public.t_item
-ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY;
