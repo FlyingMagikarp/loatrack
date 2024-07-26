@@ -36,3 +36,19 @@ export interface IOverviewCharacterData{
   inventory: IInventoryPosFlatDto[],
 }
 
+export interface IContentDto{
+  id: number,
+  name: string,
+  hardmode: boolean,
+}
+
+export interface IContentSettingDto{
+  characterId: number,
+  raidIds: number[],
+  clearCD: boolean,
+  restedCD: boolean,
+  clearGR: boolean,
+  restedGR: boolean,
+  unasLeapstone: number,
+}
+

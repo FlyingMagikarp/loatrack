@@ -1,7 +1,7 @@
 CREATE TABLE public.t_content
 (
     id integer NOT NULL,
-    "minILvl" integer NOT NULL,
+    "min_ilvl" integer NOT NULL,
     name character varying NOT NULL,
     hardmode boolean NOT NULL DEFAULT false,
     fk_type integer NOT NULL,

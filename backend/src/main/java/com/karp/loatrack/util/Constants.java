@@ -49,4 +49,9 @@ public final class Constants {
     public static final int ITEM_ID_T3_2_LEAP = 13;
     public static final int ITEM_ID_T3_2_RED = 14;
     public static final int ITEM_ID_T3_2_BLUE = 15;
+
+    // Content Type ID
+    public static final int CONTENT_TYPE_CD = 1;
+    public static final int CONTENT_TYPE_GR = 2;
+    public static final int CONTENT_TYPE_RAID = 3;
 }

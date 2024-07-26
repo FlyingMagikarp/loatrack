@@ -10,6 +10,8 @@ export const API_UPDATE_ROSTER_INV_V1 = '/inv/v1/updateRosterInv';
 export const API_OVERVIEW_STORAGE_V1 = '/overview/v1/storage';
 export const API_OVERVIEW_TIER0_V1 = '/overview/v1/tier0';
 export const API_OVERVIEW_ROSTER_V1 = '/overview/v1/roster';
+export const API_CONTENT_RAIDS_V1 = '/content/v1/raids';
+export const API_CONTENT_SETTINGS_V1 = '/content/v1/settings';
 
 // UUID
 export const USER_ID = '4a3574a2-b173-47b4-a08a-3e6c4f19cab5';
