@@ -5,15 +5,15 @@ import React from "react";
 
 interface IItemRowProps {
   item: IInventoryPosFlatDto,
-  updateInv: (ICharacterInventoryFlatDto) => void,
+  updateInv: (invPos: IInventoryPosFlatDto) => void,
 }
 
 export function ItemRow({ item, updateInv }: IItemRowProps) {
-  const [amount, setAmount] = React.useState<string>(item.amount as string)
+  const [amount, setAmount] = React.useState<number>(item.amount)
 
   const updateValue = (newVal: string) => {
     item.amount = parseInt(newVal) || 0;
-    setAmount(newVal);
+    setAmount(parseInt(newVal));
     updateInv(item);
   }
 

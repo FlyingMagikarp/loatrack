@@ -15,10 +15,10 @@ export function OverviewItemRow({ data, isCharacter = false }: IOverviewItemRowP
       <>
         {isCharacter && (<td className="roster-table-cell" onClick={() => router.push(`/character/${data.charId}`)}>{data.name}</td>)}
         {!isCharacter && (<td className="roster-table-cell">{data.name}</td>)}
-        <td className="roster-table-cell">{data.inventory[0].amount.toLocaleString()}</td>
-        <td className="roster-table-cell">{data.inventory[1].amount.toLocaleString()}</td>
-        <td className="roster-table-cell">{data.inventory[2].amount.toLocaleString()}</td>
-        <td className="roster-table-cell">{data.inventory[3].amount.toLocaleString()}</td>
+        <td className="roster-table-cell" suppressHydrationWarning={true}>{data.inventory[0].amount.toLocaleString()}</td>
+        <td className="roster-table-cell" suppressHydrationWarning={true}>{data.inventory[1].amount.toLocaleString()}</td>
+        <td className="roster-table-cell" suppressHydrationWarning={true}>{data.inventory[2].amount.toLocaleString()}</td>
+        <td className="roster-table-cell" suppressHydrationWarning={true}>{data.inventory[3].amount.toLocaleString()}</td>
       </>
   );
 }

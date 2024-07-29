@@ -1,5 +1,6 @@
 package com.karp.loatrack.overview;
 
+import com.karp.loatrack.content.dto.WeeklyClearDto;
 import com.karp.loatrack.inventory.dto.InventoryFlatDto;
 import com.karp.loatrack.overview.dto.OverviewCharacterDto;
 import lombok.RequiredArgsConstructor;

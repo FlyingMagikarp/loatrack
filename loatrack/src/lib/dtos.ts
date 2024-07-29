@@ -42,8 +42,17 @@ export interface IContentDto{
   hardmode: boolean,
 }
 
+export interface IWeeklyClearDto{
+  charId: number,
+  charName: string,
+  raidId: number,
+  raidName: string,
+  hardmode: boolean,
+  cleared: boolean,
+}
+
 export interface IContentSettingDto{
-  characterId: number,
+  charId: number,
   raidIds: number[],
   clearCD: boolean,
   restedCD: boolean,

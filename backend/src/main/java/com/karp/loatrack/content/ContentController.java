@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,24 +30,30 @@ public class ContentController {
     }
 
     @GetMapping("/weeklyClears")
-    public ResponseEntity<List<WeeklyClearDto>> getWeeklyClearStatus(@RequestParam int charId){
-        return ResponseEntity.ok().body(contentService.getWeeklyClearStatus(charId));
+    public ResponseEntity<List<List<WeeklyClearDto>>> getWeeklyClearStatus(){
+        return ResponseEntity.ok().body(contentService.getWeeklyClearStatus());
     }
 
-    //post update weekly clears
-
+    @PostMapping("/weeklyClears")
+    public void updateWeeklyClearStatus(@RequestBody WeeklyClearDto weeklyClearDto){
+        contentService.updateWeeklyClearStatus(weeklyClearDto);
+    }
     //get, reset weekly clear status
+    @GetMapping("/weeklyClears/reset")
+    public void resetWeeklyClearStatus(){
+        contentService.resetWeeklyClearStatus();
+    }
 
 
-    //get content settings
     @GetMapping("/settings")
     public ResponseEntity<ContentSettingsDto> getContentSettings(@RequestParam int charId){
-        return ResponseEntity.ok().body(contentService.getContentSetting(charId));
+        return ResponseEntity.ok().body(contentService.getContentSettings(charId));
     }
 
-
-
-
     //post update content settings
+    @PostMapping("/settings/update")
+    public void updateContentSettings(@RequestBody ContentSettingsDto contentSettingsDto){
+        contentService.updateContentSettings(contentSettingsDto);
+    }
 
 }

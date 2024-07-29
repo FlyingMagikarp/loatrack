@@ -1,9 +1,9 @@
-import {ICharacterDto, IContentDto, IContentSettingDto} from "@/lib/dtos";
+import {ICharacterDto, IContentDto, IContentSettingDto, IWeeklyClearDto} from "@/lib/dtos";
 import {
   API_BASE,
   API_CHARACTER_V1,
-  API_CONTENT_RAIDS_V1,
-  API_CONTENT_SETTINGS_V1,
+  API_CONTENT_RAIDS_V1, API_CONTENT_SETTINGS_UPDATE_V1,
+  API_CONTENT_SETTINGS_V1, API_OVERVIEW_ROSTER_V1,
   API_UPDATE_CHARACTER_V1
 } from "@/lib/constants";
 
@@ -42,4 +42,15 @@ export async function getContentSettings(charId: number){
   const res = await fetch(API_BASE + API_CONTENT_SETTINGS_V1 + `?charId=${charId}`, {cache: 'no-cache'});
   const data = await res.json();
   return data as IContentSettingDto;
+}
+
+export async function updateContentSettingsAndRaids(contentSettings: IContentSettingDto){
+  const res = await fetch(API_BASE + API_CONTENT_SETTINGS_UPDATE_V1, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+    },
+    body: JSON.stringify(contentSettings),
+    cache: 'no-cache'
+  });
 }

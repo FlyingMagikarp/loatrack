@@ -2,14 +2,15 @@
 
 import {useRouter} from "next/navigation";
 import {useEffect, useState} from "react";
-import {ICharacterDto, IContentDto} from "@/lib/dtos";
+import {ICharacterDto, IContentDto, IContentSettingDto} from "@/lib/dtos";
 import {USER_ID} from "@/lib/constants";
 import {
   deleteCharacter,
   getClearableRaids,
   getContentSettings,
-  updateCharacterInfo
+  updateCharacterInfo, updateContentSettingsAndRaids
 } from "@/app/character/action";
+import RaidSelector from "@/app/character/_components/RaidSelector";
 
 export interface ICharacterEditInfoFormProps {
   character?: ICharacterDto,
@@ -65,7 +66,7 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
   }
 
   async function onSave(){
-    let data:ICharacterDto = {
+    let dataCharacter:ICharacterDto = {
       id: character ? character.id : -1,
       userId: USER_ID,
 
@@ -76,12 +77,31 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
       notes: notes
     }
 
-    await updateCharacterInfo(data).then(() =>{
+    await handleContenUpdate();
+
+    await updateCharacterInfo(dataCharacter).then(() =>{
       if(!character) {
         router.push('/roster');
       }
       router.refresh();
     });
+  }
+
+  async function handleContenUpdate(){
+    if (!character){
+      return;
+    }
+    let dataContentSettings:IContentSettingDto = {
+      charId: character.id,
+      clearCD: clearCD,
+      restedCD: restedCD,
+      clearGR: clearGR,
+      restedGR: restedGR,
+      unasLeapstone: unasLS,
+      raidIds: [raid1, raid2, raid3]
+    }
+
+    await updateContentSettingsAndRaids(dataContentSettings);
   }
 
   async function onDelete(){
@@ -95,6 +115,20 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
       router.push(`/inventory/character/${character.id}`);
     }
 
+  }
+
+  async function updateRaidSelection(raidId: number, raidCount: number){
+    if (raidCount == 1){
+      setRaid1(raidId);
+    }
+
+    if (raidCount == 2){
+      setRaid2(raidId);
+    }
+
+    if (raidCount == 3){
+      setRaid3(raidId);
+    }
   }
 
   return (
@@ -147,6 +181,7 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
 
 
             {/*CD*/}
+            {character &&
             <div className="grid grid-cols-6 gap-6 border-t-2 p-5">
               <div className="space-x-3">
                 <label htmlFor="clearCD" className="ms-2 text-sm font-medium text-white">Clear Chaos Dungeons?</label>
@@ -164,7 +199,9 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                   </div>
               }
             </div>
+            }
             {/*GR*/}
+            {character &&
             <div className="grid grid-cols-6 gap-6 border-t-2 p-5">
               <div className="space-x-3">
                 <label htmlFor="clearGR" className="ms-2 text-sm font-medium text-white">Clear Guardian Raid?</label>
@@ -182,7 +219,9 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                   </div>
               }
             </div>
+            }
             {/*UNAS*/}
+            {character &&
             <div className="grid grid-cols-6 gap-6 border-t-2 p-5">
               <div className="col-span-6 sm:col-span-3">
                 <label htmlFor="unasLS" className="text-sm font-medium text-white block mb-2">Unas Leapstones</label>
@@ -191,11 +230,17 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
                        placeholder="0" required value={unasLS} onChange={e => setUnasLS(Number(e.target.value))}/>
               </div>
             </div>
+            }
             {/*Raids*/}
-            {raid1}
-            {raid2}
-            {raid3}
-            {raidsList.toString()}
+            {character &&
+            <div className="grid grid-cols-6 gap-6 border-t-2 p-5">
+              <div className="flex flex-col">
+                <RaidSelector raids={raidsList} selectedRaid={raid1} raidCount={1} updateRaidSelection={updateRaidSelection}/>
+                <RaidSelector raids={raidsList} selectedRaid={raid2} raidCount={2} updateRaidSelection={updateRaidSelection}/>
+                <RaidSelector raids={raidsList} selectedRaid={raid3} raidCount={3} updateRaidSelection={updateRaidSelection}/>
+              </div>
+            </div>
+            }
 
             <div className="flex flex-row justify-between">
               <div className="">

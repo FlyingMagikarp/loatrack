@@ -6,7 +6,7 @@ CREATE TABLE public.t_char_content_settings
     "rested_cd" boolean NOT NULL,
     "clear_gr" boolean NOT NULL,
     "rested_gr" boolean NOT NULL,
-    "unas_ls" boolean,
+    "unas_ls" integer,
     PRIMARY KEY (id),
     CONSTRAINT "C_SETTINGS_CHAR" FOREIGN KEY (fk_char)
         REFERENCES public.t_character (id) MATCH SIMPLE
