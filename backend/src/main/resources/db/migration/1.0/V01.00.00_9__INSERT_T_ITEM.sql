@@ -1,7 +1,7 @@
 DELETE FROM public.t_item;
 --Global
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (1, 'gold', 0);
-INSERT INTO public.t_item(id, name, fk_tier) VALUES (2, 'silver', 0);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (1, 'Gold', 0);
+INSERT INTO public.t_item(id, name, fk_tier) VALUES (2, 'Silver', 0);
 
 
 --Tier1

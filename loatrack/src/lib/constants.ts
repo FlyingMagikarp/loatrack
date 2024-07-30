@@ -15,6 +15,7 @@ export const API_OVERVIEW_WEEKLY_CLEAR_RESET_V1 = '/content/v1/weeklyClears/rese
 export const API_CONTENT_RAIDS_V1 = '/content/v1/raids';
 export const API_CONTENT_SETTINGS_V1 = '/content/v1/settings';
 export const API_CONTENT_SETTINGS_UPDATE_V1 = '/content/v1/settings/update';
+export const API_INCOME_V1 = '/income/v1/';
 
 // UUID
 export const USER_ID = '4a3574a2-b173-47b4-a08a-3e6c4f19cab5';

@@ -8,3 +8,6 @@ CREATE TABLE public."t_user"
 
 ALTER TABLE IF EXISTS public."t_user"
     OWNER to postgres;
+
+INSERT INTO "T_USER"
+VALUES ('4a3574a2-b173-47b4-a08a-3e6c4f19cab5', 'Magikarp', '12345678');

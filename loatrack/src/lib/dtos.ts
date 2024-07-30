@@ -61,3 +61,16 @@ export interface IContentSettingDto{
   unasLeapstone: number,
 }
 
+export interface IIncomeCharDto{
+  charId: number,
+  charName: string,
+  loot: IIncomeItemDto[],
+}
+
+export interface IIncomeItemDto{
+  itemId: number,
+  itemName: string,
+  bound: boolean,
+  amount: number,
+}
+

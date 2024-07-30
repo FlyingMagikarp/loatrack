@@ -46,6 +46,10 @@ export default function RootLayout({
                 <SettingsIcon className="h-4 w-4" />
                 Roster
               </NavItem>
+              <NavItem href="/income">
+                <SettingsIcon className="h-4 w-4" />
+                Income
+              </NavItem>
             </nav>
           </div>
         </div>
