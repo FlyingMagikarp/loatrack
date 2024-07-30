@@ -7,3 +7,10 @@ npm install
 
 npm run dev
 ```
+
+## Docker Setup
+
+```bash
+docker build -t loatrack-frontend .
+docker run -p 3000:3000 loatrack-frontend
+```

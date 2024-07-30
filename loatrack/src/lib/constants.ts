@@ -1,5 +1,5 @@
 // API
-export const API_BASE = 'http://localhost:8100';
+export const API_BASE = process.env.API_BASE_URL ?? 'http://localhost:8100';
 export const API_ROSTER_V1 = '/roster/v1/';
 export const API_CHARACTER_V1 = '/roster/v1/character';
 export const API_UPDATE_CHARACTER_V1 = '/roster/v1/updateCharacter';
