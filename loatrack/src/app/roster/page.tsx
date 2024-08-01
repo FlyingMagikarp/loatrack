@@ -16,7 +16,9 @@ export default async function Roster() {
   return (
     <main>
       <div>
-        <RosterTable roster={roster}/>
+        {roster &&
+          <RosterTable roster={roster}/>
+        }
 
         <Link href={"/character/new"}>
           <button className="btn-primary" type="button">Add</button>

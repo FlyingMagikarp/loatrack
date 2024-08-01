@@ -20,7 +20,8 @@ export async function RosterTable({ roster }: IRosterTable) {
           </tr>
         </thead>
         <tbody>
-          {roster.map((character) => <RosterRow character={character} />)}
+        {/* eslint-disable-next-line react/jsx-key */}
+          {roster && roster.map((character) => <RosterRow character={character} />)}
         </tbody>
       </table>
     </>
