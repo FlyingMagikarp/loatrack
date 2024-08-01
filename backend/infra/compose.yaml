@@ -1,16 +1,18 @@
 name: loatrack
 services:
-    postgres:
-        image: 'postgres:latest'
-        container_name: postgres
-        environment:
-            - 'POSTGRES_DB=loatrack'
-            - 'POSTGRES_PASSWORD=1234'
-            - 'POSTGRES_USER=postgres'
-        ports:
-            - 5432:5432
-        volumes:
-            - ./postgres:/var/lib/postgresql/data
+    #postgres:
+        #image: 'postgres:latest'
+        #container_name: postgres
+        #environment:
+            #- 'POSTGRES_DB=loatrack'
+            #- 'POSTGRES_PASSWORD=1234'
+            #- 'POSTGRES_USER=postgres'
+        #ports:
+            #- 5432:5432
+        #volumes:
+            #- ./postgres:/var/lib/postgresql/data
+# docker network create -d bridge loatrack
+# docker run -itd -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=1234 -p 5432:5432 -v ./postgres:/var/lib/postgresql/data --network=loatrack --name postgres postgres
     loatrack-frontend:
         image: loatrack-frontend
         container_name: loatrack-frontend
@@ -18,15 +20,22 @@ services:
             - loatrack-backend
         ports:
             - 3000:3000
+        networks:
+            - proxynet
         environment:
             - API_BASE_URL=http://loatrack-backend:8100
     loatrack-backend:
         image: loatrack-backend
         container_name: loatrack-backend
-        depends_on:
-            - postgres
+        #depends_on:
+            #- postgres
         ports:
             - 8100:8100
-
+        networks:
+            - proxynet
+networks:
+    proxynet:
+        name: loatrack
+        external: true
 #
 # docker run -itd -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=1234 -p 5432:5432 -v ./postgres:/var/lib/postgresql/data --name postgresql postgres

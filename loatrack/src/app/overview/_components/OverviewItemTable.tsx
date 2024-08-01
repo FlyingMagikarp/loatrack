@@ -8,7 +8,6 @@ export interface IOverviewItemTableProps {
 
 export default async function OverViewItemTable({data, isCharacter = false}:IOverviewItemTableProps) {
 
-
   return (
       <>
         <table className="table-fixed">
