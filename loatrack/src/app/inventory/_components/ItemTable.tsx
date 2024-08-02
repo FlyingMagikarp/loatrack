@@ -4,6 +4,7 @@ import {ItemRow} from "@/app/inventory/_components/ItemRow";
 import {IInventoryPosFlatDto} from "@/lib/dtos";
 import {updateCharacterInventory, updateRosterInventory} from "@/app/inventory/actions";
 import {useRouter} from "next/navigation";
+import {showSnackbar} from "@/app/action";
 
 
 export interface IItemTableProps {
@@ -23,9 +24,15 @@ export default function ItemTable({inv, charId}:IItemTableProps){
 
   async function saveInventory (){
     if (charId){
-      await updateCharacterInventory(inv, charId).then(() => router.refresh());
+      await updateCharacterInventory(inv, charId).then(() => {
+        showSnackbar();
+        router.refresh();
+      });
     } else {
-      await updateRosterInventory(inv).then(() => router.refresh());
+      await updateRosterInventory(inv).then(() => {
+        showSnackbar();
+        router.refresh();
+      });
     }
   }
 

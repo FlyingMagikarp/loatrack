@@ -11,6 +11,7 @@ import {
   updateCharacterInfo, updateContentSettingsAndRaids
 } from "@/app/character/action";
 import RaidSelector from "@/app/character/_components/RaidSelector";
+import {showSnackbar} from "@/app/action";
 
 export interface ICharacterEditInfoFormProps {
   character?: ICharacterDto,
@@ -81,8 +82,10 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
 
     await updateCharacterInfo(dataCharacter).then(() =>{
       if(!character) {
+        showSnackbar();
         router.push('/roster');
       }
+      showSnackbar();
       router.refresh();
     });
   }
@@ -106,7 +109,11 @@ export default function CharacterEditInfoForm({ character }: ICharacterEditInfoF
 
   async function onDelete(){
     if (character){
-      await deleteCharacter(character.id).then(() => {router.push('/roster'); router.refresh();});
+      await deleteCharacter(character.id).then(() => {
+        showSnackbar();
+        router.push('/roster');
+        router.refresh();
+      });
     }
   }
 

@@ -66,6 +66,10 @@ export default function RootLayout({
         </header>
         {children}
       </div>
+
+      <div id={"snackbar"} className={"bg-green-800 text-white p-4 rounded-md fixed bottom-4 left-4 flex justify-between items-center"} style={{display: 'none'}}>
+        Success!
+      </div>
     </div>
     </body>
     </html>
