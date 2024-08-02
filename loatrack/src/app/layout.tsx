@@ -50,6 +50,10 @@ export default function RootLayout({
                 <SettingsIcon className="h-4 w-4" />
                 Income
               </NavItem>
+              <NavItem href="/calculator">
+                <SettingsIcon className="h-4 w-4" />
+                Calculator
+              </NavItem>
             </nav>
           </div>
         </div>
