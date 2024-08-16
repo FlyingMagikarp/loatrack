@@ -74,3 +74,26 @@ export interface IIncomeItemDto{
   amount: number,
 }
 
+export interface IUpgradeItemDto {
+  itemId: number,
+  itemName: string,
+  base: number,
+  have: number,
+  income: number,
+  diff: number,
+  time: number,
+}
+
+export interface IUpgradeDto{
+  startIlvl: number,
+  endIlvl: number,
+
+  gold: IUpgradeItemDto,
+  silver: IUpgradeItemDto,
+  shards: IUpgradeItemDto,
+  oreha: IUpgradeItemDto,
+  leapstone: IUpgradeItemDto,
+  reds: IUpgradeItemDto,
+  blues: IUpgradeItemDto,
+}
+

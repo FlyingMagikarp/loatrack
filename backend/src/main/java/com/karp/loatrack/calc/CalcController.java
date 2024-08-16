@@ -1,6 +1,6 @@
 package com.karp.loatrack.calc;
 
-import com.karp.loatrack.calc.dto.CalcDto;
+import com.karp.loatrack.calc.dto.UpgradeDto;
 import com.karp.loatrack.inventory.dto.InventoryFlatDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +23,8 @@ import java.util.List;
 public class CalcController {
     private final CalcService calcService;
 
-    @GetMapping("/items")
-    public ResponseEntity<List<InventoryFlatDto>> getItems(@RequestParam int charId){
-        return ResponseEntity.ok().body(calcService.getItems(charId));
-    }
-
-    @PostMapping("/")
-    public ResponseEntity<List<CalcDto>> getCalculations(@RequestParam int charId, @RequestBody List<InventoryFlatDto> matList){
-        return ResponseEntity.ok().body(calcService.getCalculations(charId, matList));
+    @GetMapping("/upgrade")
+    public ResponseEntity<UpgradeDto> getUpgrades(@RequestParam int charId){
+        return ResponseEntity.ok().body(calcService.getUpgrades(charId));
     }
 }

@@ -1,5 +1,6 @@
 package com.karp.loatrack.income;
 
+import com.karp.loatrack.calc.model.Upgrade;
 import com.karp.loatrack.content.ContentRepository;
 import com.karp.loatrack.content.ContentService;
 import com.karp.loatrack.content.dto.ContentSettingsDto;
@@ -19,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -79,6 +81,32 @@ public class IncomeService {
         incomeCharDtos.addFirst(rosterIncDto);
 
         return incomeCharDtos;
+    }
+
+    public Upgrade getCharAndRosterIncome(int charId){
+        List<IncomeCharDto> rosterIncome = getRosterIncome();
+        IncomeCharDto rosterInc = rosterIncome.get(0);
+        IncomeCharDto charInc = rosterIncome.stream().filter(x -> x.charId == charId).findFirst().get();
+
+        List<IncomeItemDto> tmp = new ArrayList<>();
+        tmp.addAll(rosterInc.loot);
+        tmp.addAll(charInc.loot.stream().filter(x -> x.bound).toList());
+
+        List<IncomeItemDto> income = combineDuplicateIncomeItems(tmp);
+
+        Upgrade u = new Upgrade();
+
+        u.setOreha(0);
+
+        u.setGold(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_GOLD).findFirst().get().amount);
+        u.setSilver(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_SILVER).findFirst().get().amount);
+        u.setShards(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_T3_SHARDS).findFirst().get().amount);
+
+        u.setLeapstone(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_T3_3_LEAP).findFirst().get().amount);
+        u.setRed(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_T3_3_RED).findFirst().get().amount);
+        u.setBlue(income.stream().filter(x -> x.itemId == Constants.ITEM_ID_T3_3_BLUE).findFirst().get().amount);
+
+        return u;
     }
 
     private IncomeCharDto getCharacterIncome(CharacterDto characterDto){
