@@ -90,7 +90,7 @@ public class IncomeService {
 
         List<IncomeItemDto> tmp = new ArrayList<>();
         tmp.addAll(rosterInc.loot);
-        tmp.addAll(charInc.loot.stream().filter(x -> x.bound).toList());
+        tmp.addAll(charInc.loot.stream().filter(x -> x.bound).peek(x -> x.bound = false).toList());
 
         List<IncomeItemDto> income = combineDuplicateIncomeItems(tmp);
 

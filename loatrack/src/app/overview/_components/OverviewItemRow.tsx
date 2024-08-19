@@ -11,6 +11,12 @@ interface IOverviewItemRowProps {
 export function OverviewItemRow({ data, isCharacter = false }: IOverviewItemRowProps) {
   const router = useRouter();
 
+  if(!data || data.inventory.length < 4) {
+    console.log('Error Char inv')
+    console.log(data);
+    return <></>;
+  }
+
   return (
       <>
         {isCharacter && (<td className="roster-table-cell" onClick={() => router.push(`/character/${data.charId}`)}>{data.name}</td>)}

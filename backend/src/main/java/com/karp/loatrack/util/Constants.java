@@ -22,13 +22,14 @@ public final class Constants {
     public static final String TIER_3_1_NAME = "T3 Lower";
     public static final String TIER_3_2_NAME = "T3 Brel";
     public static final String TIER_3_3_NAME = "T3 End";
+    public static final String TIER_4_NAME = "T4 Base";
 
     // Tier iLvl Breakpoints
     public static final int TIER_1_START = 10;
     public static final int TIER_1_END = 1100;
 
     public static final int TIER_3_START = 1250;
-    public static final int TIER_3_END = 1630;
+    public static final int TIER_3_END = 1639;
 
     public static final int TIER_3_1_START = 1250;
     public static final int TIER_3_1_END = 1490;
@@ -37,7 +38,9 @@ public final class Constants {
     public static final int TIER_3_2_END = 1580;
 
     public static final int TIER_3_3_START = 1585;
-    public static final int TIER_3_3_END = 1630;
+    public static final int TIER_3_3_END = 1639;
+
+    public static final int TIER_4_START = 1640;
 
     // Item IDs
     public static final int ITEM_ID_GOLD = 1;
