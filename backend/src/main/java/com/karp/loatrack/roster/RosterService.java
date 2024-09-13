@@ -1,5 +1,7 @@
 package com.karp.loatrack.roster;
 
+import com.karp.loatrack.content.ContentSettingsRepository;
+import com.karp.loatrack.content.WeeklyClearRepository;
 import com.karp.loatrack.inventory.CharInventoryRepository;
 import com.karp.loatrack.inventory.InventoryService;
 import com.karp.loatrack.inventory.model.CharInventory;
@@ -23,6 +25,8 @@ public class RosterService {
     private final UserRepository userRepository;
     private final InventoryService inventoryService;
     private final CharInventoryRepository charInventoryRepository;
+    private final WeeklyClearRepository weeklyClearRepository;
+    private final ContentSettingsRepository contentSettingsRepository;
 
     public List<CharacterDto> getAllCharacters(UUID userId) {
         List<Character> characters = rosterRepository.findAllByUserId(userId);
@@ -77,6 +81,9 @@ public class RosterService {
     }
 
     public void deleteCharacter(int id) {
+        weeklyClearRepository.deleteByCharId(id);
+        contentSettingsRepository.deleteSettingsByCharId(id);
+
         List<CharInventory> charInv = charInventoryRepository.findAllByCharacterId(id);
         charInventoryRepository.deleteAll(charInv);
 
